@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Popup Script</title>
+    <style>
+      body {
+        background-color: rgba(0, 0, 0, 0);
+        margin: 0px auto;
+        overflow: hidden;
+      } /*定型文*/
+
+      /* ――――――――――
+          ソースによっては表示／非表示を変えるだろうもの
+          ―――――――――― */
+
+      .sc-fkmgoA {
+        display: none !important;
+      } /*背景非表示*/
+      .sc-kJNpLD > div > div > img[style] {
+        display: none;
+      } /*前景非表示*/
+      .sc-ljpcOE {
+        display: none !important;
+      } /*キャラステータス非表示*/
+      .sc-fiCXMu {
+        display: none !important;
+      } /*コマ非表示*/
+      .sc-biHdkM {
+        display: none !important;
+      } /*コマの名前非表示*/
+      .sc-fTZqFM {
+        display: none !important;
+      } /*スクパネ非表示*/
+      .sc-ByBgr {
+        display: none !important;
+      } /*マカパネ非表示*/
+      .sc-gGqESj {
+        display: none !important;
+      } /*カットイン非表示*/
+      .sc-gVtprA {
+        display: none !important;
+      } /*チャット非表示*/
+      .MuiBox-root.css-mro3c9 {
+        display: none !important;
+      } /*タイマー非表示*/
+
+      /* ――――――――――
+          吹き出し関係
+          ――――――――――― */
+
+      .sc-bgPvvg {
+        display: none !important;
+      } /*吹き出し上ダイス非表示*/
+      .sc-eYWfdp.jVewpu {
+        width: 250px;
+        height: auto;
+      } /* 吹き出し立ち絵のサイズ調整*/
+      .MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-vubbuv {
+        display: none !important;
+      } /*吹き出し▶×非表示*/
+      .MuiPaper-root {
+        height: 150px !important;
+      } /* 吹き出しのサイズ調整   */
+      .MuiTypography-root.MuiTypography-subtitle2 {
+        font-size: 25px !important;
+      } /* 吹き出しの名前 */
+      .sc-bjHpWO p {
+        font-size: 25px !important;
+      } /* 吹き出しのセリフサイズ */
+
+      /* ――――――――――
+          多分いつも非表示でいいもの
+          ―――――――――― */
+
+      .sc-QxhEr {
+        display: none !important;
+      } /*上部ツール非表示*/
+      .sc-btlehR {
+        display: none !important;
+      } /*上部BGMツール非表示*/
+      .sc-enTruF {
+        display: none !important;
+      } /*右下バー非表示*/
+      .sc-gDyKqB {
+        display: none !important;
+      } /*右下ペンボタン非表示*/
+      .MuiSnackbar-anchorOriginTopRight {
+        display: none !important;
+      } /*カットイン文字非表示*/
+      .MuiSnackbar-root {
+        display: none !important;
+      } /*入室時提示非表示*/
+
+      /* スクロールバーの非表示 */
+      ::-webkit-scrollbar {
+        display: none !important;
+      }
+
+      /* 背景画像のスタイル */
+      .background-success {
+        background-image: url("https://drive.google.com/uc?id=1I_bhymDVoo_8W71T9UghwESL2VU6S2XO");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .background-failure {
+        background-image: url("https://drive.google.com/uc?id=1z-A52XMHZ2GKhf-76ML6wPS5Ht0Rekor");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // 特定のウェブページのURLを確認
+        if (window.location.href === "https://ccfolia.com/rooms/zCR99IzEo") {
+          const chatInput = document.querySelector(".chat-input");
+
+          if (chatInput) {
+            chatInput.addEventListener("keypress", function (e) {
+              if (e.key === "Enter") {
+                const message = this.value;
+
+                const popup = document.querySelector(".MuiPaper-root");
+
+                if (
+                  message.includes("決定的成功") ||
+                  message.includes("決定的成功/スペシャル")
+                ) {
+                  popup.classList.add("background-success");
+                  popup.style.backgroundColor = "transparent";
+                } else if (message.includes("致命的失敗")) {
+                  popup.classList.add("background-failure");
+                  popup.style.backgroundColor = "transparent";
+                } else {
+                  popup.classList.remove(
+                    "background-success",
+                    "background-failure"
+                  );
+                  popup.style.backgroundImage = "";
+                  popup.style.backgroundColor = "";
+                }
+              }
+            });
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
